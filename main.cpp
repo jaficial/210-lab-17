@@ -3,6 +3,21 @@ using namespace std;
 
 const int SIZE = 7;  
 
+void linked_list_creator(size);
+
+void linked_list_creator(size){
+	for (int i = 0; i < SIZE; i ++){
+		int tmp_val = rand() % 100;
+		Node *newVal = new Node;
+
+		if (!head){
+			head = newVal;
+			newVal->next = nullptr;
+			newVal->value = tmp_val;
+		}
+	}
+}
+
 struct Node {
     float value;
     Node *next;
@@ -14,10 +29,11 @@ int main() {
     Node *head = nullptr;
     int count = 0;
 
-    // NOTE: NEED TO CREATE A FUNCTION FOR CREATING A LINKED LIST 
+    // NOTE: NEED TO CREATE A FUNCTION FOR CREATING A LINKED LIST WITH RANDOM NUMBERS 
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
-        int tmp_val = rand() % 100;
+        cout << "new tmp_val created" << endl;
+	int tmp_val = rand() % 100;
         Node *newVal = new Node;
         
         // adds node at head
