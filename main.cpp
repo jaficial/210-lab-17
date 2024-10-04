@@ -14,6 +14,7 @@ int main() {
     Node *head = nullptr;
     int count = 0;
 
+    // NOTE: NEED TO CREATE A FUNCTION FOR CREATING A LINKED LIST 
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
         int tmp_val = rand() % 100;
@@ -32,7 +33,8 @@ int main() {
         }
     }
     output(head);
-
+	
+    // NOTE: NEED TO CREATE A FUNCTION FOR DELETING A NODE
     // deleting a node
     Node * current = head;
     cout << "Which node to delete? " << endl;
@@ -41,7 +43,7 @@ int main() {
     cout << "Choice --> ";
     cin >> entry;
 
-    // traverse that many times and delete that node
+    // Traverse that many times and delete that node
     current = head;
     Node *prev = head;
     for (int i = 0; i < (entry-1); i++)
@@ -58,7 +60,8 @@ int main() {
         current = nullptr;
     }
     output(head);
-
+	
+    // NOTE: NEED TO CREATE A FUNCTION FOR INSERTING A NODE
     // insert a node
     current = head;
     cout << "After which node to insert 10000? " << endl;
@@ -86,6 +89,7 @@ int main() {
     prev->next = newnode;
     output(head);
 
+    // NOTE: NEED TO CREATE A FUNCTION FOR DELETING THE LINKED LIST
     // deleting the linked list
     current = head;
     while (current) {
