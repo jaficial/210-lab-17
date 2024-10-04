@@ -12,7 +12,9 @@ struct Node {
 void output(Node *);
 void delete_node(Node *);
 
-void delete_node(Node *)
+void delete_node(Node *){
+	
+}
 
 int main() {
     Node *head = nullptr;
