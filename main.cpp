@@ -2,8 +2,7 @@
 using namespace std;
 
 const int SIZE = 7;  
-
-
+/*NEED TO CREATE FUNCTIONS FOR */
 struct Node {
     float value;
     Node *next;
@@ -12,9 +11,11 @@ struct Node {
 void output(Node *);
 void delete_node(Node *);
 
-//void delete_node(Node *){
-	
-//}
+void delete_node(Node *){
+    
+
+}
+
 
 int main() {
     Node *head = nullptr;
@@ -23,8 +24,7 @@ int main() {
     // NOTE: DONT NEED TO CREATE A FUNCTION FOR CREATING A LINKED LIST
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
-        cout << "new tmp_val created" << endl;
-	int tmp_val = rand() % 100;
+	    int tmp_val = rand() % 100;
         Node *newVal = new Node;
         
         // adds node at head
