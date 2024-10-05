@@ -21,20 +21,22 @@ void add_front_node();
 void add_tail_node();
 void delete_linked_list();
 
-void delete_node(Node *){
-    
+// to delete node, a pointer pointing to the head of the linked list
+void delete_node(Node *current, int entry){
+    for (int i = 0; i < (entry - 1); i++){
+        if ()
 
+    }
 }
 
 void delete_linked_list(){
 
-    
+
 }
 int main() {
     Node *head = nullptr;
     int count = 0;
 
-    // NOTE: DONT NEED TO CREATE A FUNCTION FOR CREATING A LINKED LIST
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
 	    int tmp_val = rand() % 100;
