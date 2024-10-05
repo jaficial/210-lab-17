@@ -17,7 +17,7 @@ struct Node {
 void output(Node *);
 void delete_node(Node *, Node *, int);
 void insert_node(Node *, Node *, Node *, int, int);
-void add_front_node();
+void add_front_node(Node *, Node *, int);
 void add_tail_node();
 void delete_linked_list(Node *, Node*);
 
@@ -59,12 +59,18 @@ void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value)
 void delete_linked_list(Node *current, Node *head){
     while(current) {
         head = current->next;
-        cout << "This is current before deleting: " << current->next << endl;
         delete current;
         current = head;
     }
 }
 
+void add_front_node(Node *newVal, Node *head, int tmp_val){
+    if (!head){
+    head = newVal;
+    newVal->next = nullptr;
+    newVal->value = tmp_val;
+    }
+}
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -76,10 +82,17 @@ int main() {
         
         // adds node at head
         if (!head) { // if this is the first node, it's the new head
+            // add_front_node(newVal, head, tmp_val);
             head = newVal;
             newVal->next = nullptr;
             newVal->value = tmp_val;
+            cout << newVal << " is newVal" << endl;
+            cout << tmp_val << " is tmp_val" << endl;
         }
+        //     head = newVal;
+        //     newVal->next = nullptr;
+        //     newVal->value = tmp_val;
+        // }
         else { // its a second or subsequent node; place at the head
             newVal->next = head;
             newVal->value = tmp_val;
@@ -98,7 +111,7 @@ int main() {
     cin >> entry;
     current = head;
     Node *prev = head;
-    
+
     //deleting a node
     delete_node(current, prev, entry);
     output(head);
