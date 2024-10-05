@@ -2,21 +2,34 @@
 using namespace std;
 
 const int SIZE = 7;  
-/*NEED TO CREATE FUNCTIONS FOR */
+/*NEED TO CREATE FUNCTIONS FOR:
+    adding a node to the front
+    adding a node to the tail
+    deleting a node
+    inserting a node
+    deleting entire linked list*/
+
 struct Node {
     float value;
     Node *next;
 };
 
 void output(Node *);
-void delete_node(Node *);
+void delete_node();
+void insert_node();
+void add_front_node();
+void add_tail_node();
+void delete_linked_list();
 
 void delete_node(Node *){
     
 
 }
 
+void delete_linked_list(){
 
+    
+}
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -63,7 +76,7 @@ int main() {
     // at this point, delete current and reroute pointers
     if (current) {  // checks for current to be valid before deleting the node
         prev->next = current->next;
-        delete current;
+        delete current; // deletes what is referenced by the pointer
         current = nullptr;
     }
     output(head);
