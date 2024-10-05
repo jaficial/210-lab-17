@@ -16,14 +16,14 @@ struct Node {
 
 void output(Node *);
 void delete_node(Node *, Node *, int);
-void insert_node();
+void insert_node(Node *, Node *, int);
 void add_front_node();
 void add_tail_node();
 void delete_linked_list();
 
 // to delete node, function needs pointers for current/head node, previous node, and the node being deleted 
 void delete_node(Node *current, Node *prev, int entry){
-    for (int i = 0; i < (entry - 1); i++){
+    for (int i = 0; i < (entry - 1); i++){ // traverses through the linked list, then deletes the node
         if (i == 0){
             current = current->next;
         }
@@ -37,6 +37,10 @@ void delete_node(Node *current, Node *prev, int entry){
         delete current;
         current = nullptr;
     }
+}
+
+void insert_node(Node *current, Node *prev, int entry){
+
 }
 
 int main() {
@@ -71,26 +75,10 @@ int main() {
     cout << "Choice --> ";
     cin >> entry;
 
-    // Traverse that many times and delete that node
     current = head;
     Node *prev = head;
     delete_node(current, prev, entry);
-    /*
-    //----------------------------------------------------
-    for (int i = 0; i < (entry-1); i++)
-        if (i == 0)
-            current = current->next;
-        else {
-            current = current->next;
-            prev = prev->next;
-        }
-    // at this point, delete current and reroute pointers
-    if (current) {  // checks for current to be valid before deleting the node
-        prev->next = current->next;
-        delete current; // deletes what is referenced by the pointer
-        current = nullptr;
-    }*/
-    //----------------------------------------------------
+   
     output(head);
 	
     // NOTE: NEED TO CREATE A FUNCTION FOR INSERTING A NODE
