@@ -10,7 +10,7 @@ struct Node {
     float value;
     Node *next;
 };
-
+// CITED: Cited lecture videos and lecture/demo code when rewriting this code, still need to review some concepts
 // function prototypes
 void output(Node *);
 void delete_node(Node *, Node *, int);
@@ -18,7 +18,6 @@ void insert_node(Node *, Node *, Node *, int, int);
 void add_front_node(Node *, Node *, int);
 void add_tail_node();
 void delete_linked_list(Node *, Node*);
-
 
 // To delete node, function requires pointers for current/head node, previous node, and the node being deleted 
 void delete_node(Node *current, Node *prev, int entry){
