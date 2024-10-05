@@ -55,14 +55,16 @@ void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value)
     prev->next = newnode;
 }
 
+// WORKS
 void delete_linked_list(Node *current, Node *head){
     while(current) {
         head = current->next;
+        cout << "This is current before deleting: " << current->next << endl;
         delete current;
         current = head;
     }
-    head = nullptr;
 }
+
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -94,15 +96,14 @@ int main() {
     int entry;
     cout << "Choice --> ";
     cin >> entry;
-
     current = head;
     Node *prev = head;
+    
+    //deleting a node
     delete_node(current, prev, entry);
-   
     output(head);
 	
-    // NOTE: NEED TO CREATE A FUNCTION FOR INSERTING A NODE
-    // insert a node
+   
     current = head;
     cout << "After which node to insert 10000? " << endl;
     count = 1;
@@ -118,23 +119,15 @@ int main() {
     Node * newnode = new Node;
     newnode->value = 10000;
     int value = newnode->value;
-
+    // inserting a node
     insert_node(current, prev, newnode, entry, value);
-
     output(head);
 
-    // NOTE: NEED TO CREATE A FUNCTION FOR DELETING THE LINKED LIST
     // deleting the linked list
     current = head;
-    // delete_linked_list(current, head);
-    // ---------------------------------------------------
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-    head = nullptr;
-    // --------------------------------------------------
+    delete_linked_list(current, head);
+   
+    head = nullptr; // NOTE: assigning head to nullptr must be in main function 
     output(head);
 
     return 0;
