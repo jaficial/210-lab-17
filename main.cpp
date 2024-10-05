@@ -15,24 +15,30 @@ struct Node {
 };
 
 void output(Node *);
-void delete_node();
+void delete_node(Node *, Node *, int);
 void insert_node();
 void add_front_node();
 void add_tail_node();
 void delete_linked_list();
 
-// to delete node, a pointer pointing to the head of the linked list
-void delete_node(Node *current, int entry){
+// to delete node, function needs pointers for current/head node, previous node, and the node being deleted 
+void delete_node(Node *current, Node *prev, int entry){
     for (int i = 0; i < (entry - 1); i++){
-        if ()
-
+        if (i == 0){
+            current = current->next;
+        }
+        else{
+            current = current->next;
+            prev = prev->next;
+        }
+    }
+    if (current) {
+        prev->next = current->next;
+        delete current;
+        current = nullptr;
     }
 }
 
-void delete_linked_list(){
-
-
-}
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -68,6 +74,9 @@ int main() {
     // Traverse that many times and delete that node
     current = head;
     Node *prev = head;
+    delete_node(current, prev, entry);
+    /*
+    //----------------------------------------------------
     for (int i = 0; i < (entry-1); i++)
         if (i == 0)
             current = current->next;
@@ -80,7 +89,8 @@ int main() {
         prev->next = current->next;
         delete current; // deletes what is referenced by the pointer
         current = nullptr;
-    }
+    }*/
+    //----------------------------------------------------
     output(head);
 	
     // NOTE: NEED TO CREATE A FUNCTION FOR INSERTING A NODE
