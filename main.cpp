@@ -16,7 +16,7 @@ struct Node {
 
 void output(Node *);
 void delete_node(Node *, Node *, int);
-void insert_node(Node *, Node *, int);
+void insert_node(Node *, Node *, Node *, int, int);
 void add_front_node();
 void add_tail_node();
 void delete_linked_list();
@@ -39,8 +39,19 @@ void delete_node(Node *current, Node *prev, int entry){
     }
 }
 
-void insert_node(Node *current, Node *prev, int entry){
-
+void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value){
+    for (int i = 0; i < entry; i++){
+        if (i == 0){
+            current = current->next;
+        }
+        else{
+            current = current->next;
+            prev = prev->next;
+        }
+    }
+    newnode->value = 10000;
+    newnode->next = current;
+    prev->next = newnode;
 }
 
 int main() {
@@ -95,6 +106,16 @@ int main() {
 
     current = head;
     prev = head;
+
+    Node * newnode = new Node;
+    newnode->value = 10000;
+    int value = newnode->value;
+    newnode->next = current;
+    prev->next = newnode;
+
+    insert_node(current, prev, newnode, entry, value);
+    // ----------------------------------------------
+    /*
     for (int i = 0; i < (entry); i++)
         if (i == 0)
             current = current->next;
@@ -107,6 +128,8 @@ int main() {
     newnode->value = 10000;
     newnode->next = current;
     prev->next = newnode;
+    */
+    // ---------------------------------------------
     output(head);
 
     // NOTE: NEED TO CREATE A FUNCTION FOR DELETING THE LINKED LIST
