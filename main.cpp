@@ -1,13 +1,10 @@
+// COMSC-210 | Lab 17 | Jed Aficial
+// github link: https://github.com/jaficial/210-lab-17
+
 #include <iostream>
 using namespace std;
 
 const int SIZE = 7;  
-/*NEED TO CREATE FUNCTIONS FOR:
-    adding a node to the front
-    adding a node to the tail
-    deleting a node
-    inserting a node
-    deleting entire linked list*/
 
 struct Node {
     float value;
@@ -21,10 +18,10 @@ void add_front_node(Node *, Node *, int);
 void add_tail_node();
 void delete_linked_list(Node *, Node*);
 
-// WORKS
-// to delete node, function needs pointers for current/head node, previous node, and the node being deleted 
+
+// to delete node, function requires pointers for current/head node, previous node, and the node being deleted 
 void delete_node(Node *current, Node *prev, int entry){
-    for (int i = 0; i < (entry - 1); i++){ // traverses through the linked list, then deletes the node
+    for (int i = 0; i < (entry - 1); i++){ // traverses through the linked list, then deletes the selected node
         if (i == 0){
             current = current->next;
         }
@@ -40,7 +37,7 @@ void delete_node(Node *current, Node *prev, int entry){
     }
 }
 
-// WORKS
+// to insert node, function requires pointers for current, previous, new nodes, the int for which node to insert after
 void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value){
     for (int i = 0; i < entry; i++){
         if (i == 0){
@@ -66,9 +63,14 @@ void delete_linked_list(Node *current, Node *head){
 
 void add_front_node(Node *newVal, Node *head, int tmp_val){
     if (!head){
-    head = newVal;
-    newVal->next = nullptr;
-    newVal->value = tmp_val;
+        head = newVal;
+        newVal->next = nullptr;
+        newVal->value = tmp_val;
+    }
+    else{
+        newVal->next = head;
+        newVal->value = tmp_val;
+        head = newVal;
     }
 }
 int main() {
@@ -78,21 +80,14 @@ int main() {
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
 	    int tmp_val = rand() % 100;
+        cout << "this is the tmp_val " << tmp_val << endl;
         Node *newVal = new Node;
-        
         // adds node at head
         if (!head) { // if this is the first node, it's the new head
-            // add_front_node(newVal, head, tmp_val);
             head = newVal;
             newVal->next = nullptr;
             newVal->value = tmp_val;
-            cout << newVal << " is newVal" << endl;
-            cout << tmp_val << " is tmp_val" << endl;
         }
-        //     head = newVal;
-        //     newVal->next = nullptr;
-        //     newVal->value = tmp_val;
-        // }
         else { // its a second or subsequent node; place at the head
             newVal->next = head;
             newVal->value = tmp_val;
