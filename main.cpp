@@ -21,6 +21,7 @@ void add_front_node();
 void add_tail_node();
 void delete_linked_list();
 
+// WORKS
 // to delete node, function needs pointers for current/head node, previous node, and the node being deleted 
 void delete_node(Node *current, Node *prev, int entry){
     for (int i = 0; i < (entry - 1); i++){ // traverses through the linked list, then deletes the node
@@ -39,6 +40,7 @@ void delete_node(Node *current, Node *prev, int entry){
     }
 }
 
+// WORKS
 void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value){
     for (int i = 0; i < entry; i++){
         if (i == 0){
@@ -49,11 +51,14 @@ void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value)
             prev = prev->next;
         }
     }
-    newnode->value = 10000;
     newnode->next = current;
     prev->next = newnode;
 }
 
+void delete_linked_list(){
+
+    
+}
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -106,30 +111,12 @@ int main() {
 
     current = head;
     prev = head;
-
     Node * newnode = new Node;
     newnode->value = 10000;
     int value = newnode->value;
-    newnode->next = current;
-    prev->next = newnode;
 
     insert_node(current, prev, newnode, entry, value);
-    // ----------------------------------------------
-    /*
-    for (int i = 0; i < (entry); i++)
-        if (i == 0)
-            current = current->next;
-        else {
-            current = current->next;
-            prev = prev->next;
-        }
-    //at this point, insert a node between prev and current
-    Node * newnode = new Node;
-    newnode->value = 10000;
-    newnode->next = current;
-    prev->next = newnode;
-    */
-    // ---------------------------------------------
+
     output(head);
 
     // NOTE: NEED TO CREATE A FUNCTION FOR DELETING THE LINKED LIST
