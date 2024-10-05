@@ -19,7 +19,7 @@ void add_tail_node();
 void delete_linked_list(Node *, Node*);
 
 
-// to delete node, function requires pointers for current/head node, previous node, and the node being deleted 
+// To delete node, function requires pointers for current/head node, previous node, and the node being deleted 
 void delete_node(Node *current, Node *prev, int entry){
     for (int i = 0; i < (entry - 1); i++){ // traverses through the linked list, then deletes the selected node
         if (i == 0){
@@ -37,7 +37,8 @@ void delete_node(Node *current, Node *prev, int entry){
     }
 }
 
-// to insert node, function requires pointers for current, previous, new nodes, the int for which node to insert after
+/* To insert node, function requires pointers for current, previous, new nodes, 
+   the int for which node to insert after, and the int for the value that is being inserted*/
 void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value){
     for (int i = 0; i < entry; i++){
         if (i == 0){
@@ -52,7 +53,9 @@ void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value)
     prev->next = newnode;
 }
 
-// WORKS
+/* To delete the linked list, function requires current and head node.
+   Will need to traverse the linked list, deleting the allocated memory for each node,
+   then assigning the node to a null pointer*/
 void delete_linked_list(Node *current, Node *head){
     while(current) {
         head = current->next;
@@ -61,6 +64,9 @@ void delete_linked_list(Node *current, Node *head){
     }
 }
 
+/* to add a node to the front of the linked list, function requires the 
+   pointer to the new value, pointer to the head, and the value that is being inserted. */ 
+// NOTE: STILL NEED TO REVIEW THIS POST-ASSIGNMENT DUE DATE
 void add_front_node(Node *newVal, Node *head, int tmp_val){
     if (!head){
         head = newVal;
@@ -73,6 +79,7 @@ void add_front_node(Node *newVal, Node *head, int tmp_val){
         head = newVal;
     }
 }
+
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -96,8 +103,6 @@ int main() {
     }
     output(head);
 	
-    // NOTE: NEED TO CREATE A FUNCTION FOR DELETING A NODE
-    // deleting a node
     Node * current = head;
     cout << "Which node to delete? " << endl;
     output(head);
@@ -107,11 +112,11 @@ int main() {
     current = head;
     Node *prev = head;
 
-    //deleting a node
+    // Call to delete_node function for deleting a node
     delete_node(current, prev, entry);
     output(head);
-	
    
+   // inserting a value after a specified node
     current = head;
     cout << "After which node to insert 10000? " << endl;
     count = 1;
@@ -127,7 +132,7 @@ int main() {
     Node * newnode = new Node;
     newnode->value = 10000;
     int value = newnode->value;
-    // inserting a node
+    // Call to insert_node function to insert the value
     insert_node(current, prev, newnode, entry, value);
     output(head);
 
@@ -135,7 +140,8 @@ int main() {
     current = head;
     delete_linked_list(current, head);
    
-    head = nullptr; // NOTE: assigning head to nullptr must be in main function 
+    head = nullptr; /* NOTE: assigning head to nullptr must be in main function, 
+                             have to investigate why this is the case.*/
     output(head);
 
     return 0;
