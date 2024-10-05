@@ -19,7 +19,7 @@ void delete_node(Node *, Node *, int);
 void insert_node(Node *, Node *, Node *, int, int);
 void add_front_node();
 void add_tail_node();
-void delete_linked_list();
+void delete_linked_list(Node *, Node*);
 
 // WORKS
 // to delete node, function needs pointers for current/head node, previous node, and the node being deleted 
@@ -55,9 +55,13 @@ void insert_node(Node *current, Node *prev, Node *newnode, int entry, int value)
     prev->next = newnode;
 }
 
-void delete_linked_list(){
-
-    
+void delete_linked_list(Node *current, Node *head){
+    while(current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
 }
 int main() {
     Node *head = nullptr;
@@ -122,12 +126,15 @@ int main() {
     // NOTE: NEED TO CREATE A FUNCTION FOR DELETING THE LINKED LIST
     // deleting the linked list
     current = head;
+    // delete_linked_list(current, head);
+    // ---------------------------------------------------
     while (current) {
         head = current->next;
         delete current;
         current = head;
     }
     head = nullptr;
+    // --------------------------------------------------
     output(head);
 
     return 0;
