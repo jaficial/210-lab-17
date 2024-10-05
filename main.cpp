@@ -11,6 +11,7 @@ struct Node {
     Node *next;
 };
 
+// function prototypes
 void output(Node *);
 void delete_node(Node *, Node *, int);
 void insert_node(Node *, Node *, Node *, int, int);
